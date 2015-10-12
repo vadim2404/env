@@ -1,0 +1,29 @@
+- name: add elastic key
+  apt_key: url=https://packages.elastic.co/GPG-KEY-elasticsearch state=present
+  become: yes
+
+- name: add elastic ppa
+  apt_repository: repo="deb http://packages.elastic.co/elasticsearch/1.7/debian stable main" state=present update_cache=yes
+  become: yes
+
+- name: install elasticsearch
+  apt: name=elasticsearch state=present
+  become: yes
+  notify:
+    - restart elasticsearch
+
+- name: update config
+  copy: src=elasticsearch.yml dest=/etc/elasticsearch/elasticsearch.yml
+  become: yes
+  notify:
+    - restart elasticsearch
+
+- name: install elasticsearch plugins
+  elasticsearch_plugin: name={{ item }} state=present
+  become: yes
+  with_items:
+    - mobz/elasticsearch-head
+    - elasticsearch/marvel/latest
+  notify:
+    - restart elasticsearch
+

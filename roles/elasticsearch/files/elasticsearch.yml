@@ -1,0 +1,2 @@
+node.local: True
+script.groovy.sandbox.enabled: True
