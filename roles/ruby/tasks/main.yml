@@ -1,0 +1,8 @@
+- name: Install ruby
+  apt: name=ruby state=present
+  become: yes
+
+- name: Install gems
+  gem: name={{ item }} state=present
+  with_items:
+    - sass
