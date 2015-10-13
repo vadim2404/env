@@ -1,0 +1,15 @@
+- name: Add NodeJS PPA
+  apt_repository: repo='ppa:rwky/nodejs' state=present update_cache=yes
+  become: yes
+
+- name: Install NodeJS
+  apt: name=nodejs state=present
+  become: yes
+
+- name: Install NPM modules
+  npm: name={{ item }} global=yes production=yes state=present
+  become: yes
+  with_items:
+    - gulp
+    - grunt
+    - bower
