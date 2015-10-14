@@ -17,3 +17,15 @@
     - apache2-utils
     - siege
     - supervisor
+    - atop
+    - htop
+    - iotop
+    - tar
+    - gzip
+    - rsync
+    - openssl
+    - openssh-server
+    - openssh-client
+    - sendmail
+    - curl
+    - wget
