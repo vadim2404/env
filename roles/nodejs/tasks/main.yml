@@ -11,5 +11,5 @@
   become: yes
   with_items:
     - gulp
-    - grunt
+    - grunt-cli
     - bower
