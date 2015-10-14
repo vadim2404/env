@@ -1,0 +1,13 @@
+- name: Add Git PPA
+  apt_repository: repo='ppa:git-core/ppa' update_cache=yes
+  become: yes
+
+- name: Install Git
+  apt: name=git state=present
+  become: yes
+
+- name: Copy .gitignore_global
+  copy: src=.gitignore_global dest=~/.gitignore_global
+
+- name: Configure .gitconfig
+  template: src=.gitconfig.j2 dest=~/.gitconfig

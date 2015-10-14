@@ -1,0 +1,35 @@
+- name: Add PHP PPA
+  apt_repository: repo='ppa:ondrej/php5-5.6' state=present update_cache=yes
+  become: yes
+
+- name: Install packages
+  apt: name={{ item }} state=present
+  become: yes
+  with_items:
+    - php-pear
+    - php5
+    - php5-cli
+    - php5-common
+    - php5-curl
+    - php5-dev
+    - php5-fpm
+    - php5-gd
+    - php5-imagick
+    - php5-intl
+    - php5-json
+    - php5-mcrypt
+    - php5-memcache
+    - php5-mongo
+    - php5-mysqlnd
+    - php5-readline
+    - php5-redis
+    - php5-sqlite
+    - php5-xdebug
+    - php5-xmlrpc
+    - php5-xsl
+
+- name: Configure PHP-FPM
+  template: src=www.conf.j2 dest=/etc/php5/fpm/pool.d/www.conf
+  become: yes
+  notify:
+    - restart fpm

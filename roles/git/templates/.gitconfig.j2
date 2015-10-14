@@ -1,0 +1,10 @@
+[user]
+	email = {{ git_user_email }}
+	name = {{ git_user_name }}
+[color]
+	ui = true
+[push]
+	default = matching
+[core]
+	editor = vim
+	excludesfile = /home/{{ ansible_user_id }}/.gitignore_global

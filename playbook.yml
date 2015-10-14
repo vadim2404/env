@@ -1,7 +1,11 @@
 - hosts: all
   roles:
+    - git
+    - nginx
     - elasticsearch
     - mysql
     - redis
     - nodejs
     - ruby
+    - php
+    - rabbitmq

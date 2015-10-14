@@ -29,7 +29,7 @@
     - restart mysql
 
 - name: Update MySQL root password
-  mysql_user: name=root host={{ item }} password={{ root_password }} login_user=root login_password={{ root_password }} check_implicit_admin=yes
+  mysql_user: name=root host={{ item }} password={{ mysql_root_password }} login_user=root login_password={{ mysql_root_password }} check_implicit_admin=yes
   become: yes
   with_items:
     - "{{ ansible_hostname }}"
