@@ -11,7 +11,7 @@
   become: yes
 
 - name: Install percona database server
-  action: apt pkg={{ item }} state=present
+  action: apt pkg={{ item }} state=latest
   become: yes
   with_items:
           - percona-server-server-5.6

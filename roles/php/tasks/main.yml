@@ -3,7 +3,7 @@
   become: yes
 
 - name: Install packages
-  apt: name={{ item }} state=present
+  apt: name={{ item }} state=latest
   become: yes
   with_items:
     - php-pear
@@ -31,5 +31,22 @@
 - name: Configure PHP-FPM
   template: src=www.conf.j2 dest=/etc/php5/fpm/pool.d/www.conf
   become: yes
+  notify:
+    - restart fpm
+
+- name: Install msgpack module
+  pear: name=pecl/msgpack-beta state=latest
+  become: yes
+
+- name: Create mspack's config
+  copy: src=msgpack.ini dest=/etc/php5/mods-available
+  become: yes
+
+- name: Enable msgpack
+  shell: ln -s /etc/php5/mods-available/msgpack.ini /etc/php5/{{ item }}/conf.d/20-msgpack.ini creates=/etc/php5/{{ item }}/conf.d/20-msgpack.ini
+  become: yes
+  with_items:
+    - cli
+    - fpm
   notify:
     - restart fpm

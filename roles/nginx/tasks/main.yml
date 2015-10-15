@@ -3,5 +3,5 @@
   become: yes
 
 - name: Install NGINX
-  apt: name=nginx state=present
+  apt: name=nginx state=latest
   become: yes

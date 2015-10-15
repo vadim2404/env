@@ -3,11 +3,11 @@
   become: yes
 
 - name: Install NodeJS
-  apt: name=nodejs state=present
+  apt: name=nodejs state=latest
   become: yes
 
 - name: Install NPM modules
-  npm: name={{ item }} global=yes production=yes state=present
+  npm: name={{ item }} global=yes production=yes state=latest
   become: yes
   with_items:
     - gulp

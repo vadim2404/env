@@ -3,7 +3,7 @@
   become: yes
 
 - name: Install packages
-  apt: name={{ item }} state=present
+  apt: name={{ item }} state=latest
   become: yes
   with_items:
     - gcc

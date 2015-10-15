@@ -3,7 +3,7 @@
   become: yes
 
 - name: Install Git
-  apt: name=git state=present
+  apt: name=git state=latest
   become: yes
 
 - name: Copy .gitignore_global
