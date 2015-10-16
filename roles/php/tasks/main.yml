@@ -38,7 +38,7 @@
   pear: name=pecl/msgpack-beta state=latest
   become: yes
 
-- name: Create mspack's config
+- name: Create msgpack's config
   copy: src=msgpack.ini dest=/etc/php5/mods-available
   become: yes
 
