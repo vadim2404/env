@@ -1,2 +1,3 @@
 node.local: True
 script.groovy.sandbox.enabled: True
+index.storage.type: memory
