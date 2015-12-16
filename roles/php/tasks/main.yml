@@ -35,7 +35,7 @@
     - restart fpm
 
 - name: Install msgpack module
-  pear: name=pecl/msgpack-beta state=latest
+  pear: name=pecl/msgpack-0.5.7
   become: yes
 
 - name: Create msgpack's config
