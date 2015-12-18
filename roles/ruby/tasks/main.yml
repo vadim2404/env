@@ -3,6 +3,7 @@
   become: yes
 
 - name: Install gems
-  gem: name={{ item }} state=latest
+  gem: name={{ item }} state=latest user_install=no
+  sudo: yes
   with_items:
     - sass
